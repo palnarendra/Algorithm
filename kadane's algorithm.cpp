@@ -6,14 +6,14 @@ long long maxSubarraySum(int arr[], int n){
         int cnt = 0;
         for(int i=0;i<n;i++)
         {
-            if(arr[i]<0)
+            c_sum += arr[i];
+            if(arr[i] < 0)
             {
-                c_sum = (c_sum + arr[i]) >0 ? c_sum+arr[i] : 0;
                 cnt++;
             }
-            else
+            if(c_sum < 0)
             {
-                c_sum += arr[i];
+                c_sum = 0;
             }
             max_sum = max_sum < c_sum ? c_sum : max_sum;
         }
@@ -22,7 +22,7 @@ long long maxSubarraySum(int arr[], int n){
         {
             return max_sum;
         }
-        else
+        else // if all the element are negative
         {
            
             for(int i=0;i<n;i++)
